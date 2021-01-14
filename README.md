@@ -1,43 +1,60 @@
+# Twitterbot
 
-Twitterbot
-Twitterbot adalah aplikasi Python sederhana untuk:
+Twitterbot is a simple Python application for:
 
-membaca dan mengurai umpan RSS serta memposting judul dan tautannya ke akun Twitter.
-mencari tweet untuk kata kunci atau hashtag dan me-retweet tweet tersebut.
-Kedua fungsi (Membaca RSS dan me-retweet) dapat digunakan secara independen. Bot terbatas untuk menangani satu umpan dan satu akun Twitter.
+* reading and parsing a RSS feed and posting its title and links to a Twitter account.
+* searching tweets for keywords or hashtags and retweet those tweets.
 
-Install
-Unduh atau git clone Twitterbot:
-git clone https://github.com/peterdalle/twitterbot
-Instal dependensi feedparser dan twython:
-pip instal feedparser
-pip instal twython
-Buat aplikasi Twitter, dan buat kunci, token, dll.
-Ubah pengaturan di kode sumber.
-Ubah feed_url menjadi RSS feed yang ingin Anda baca.
-Ubah variabel di kelas TwitterAuth dan tambahkan kunci, token, dll. Untuk menghubungkan ke aplikasi Twitter Anda.
-Ubah retweet_include_words untuk kata kunci yang ingin Anda cari dan retweet, dan retweet_exclude_words untuk kata kunci yang ingin Anda kecualikan dari retweet. Misalnya retweet_include_words = ["foo"] dan retweet_exclude_words = ["bar"] akan menyertakan tweet apapun dengan kata "foo", selama kata "bar" tidak ada. Daftar ini juga boleh dikosongkan, misalnya retweet_exclude_words = [].
-Persyaratan
-Python 3+
-Akun Twitter
-Pemakaian
-Baca RSS feed dan posting ke akun Twitter:
+Both functions (Reading RSS and retweeting) can be used independently. The bot is limited to handle one feed and one Twitter account.
 
+## Install
+
+1. Download or git clone Twitterbot:
+   - `git clone https://github.com/peterdalle/twitterbot`
+2. Install dependencies [feedparser](https://pythonhosted.org/feedparser/) and [twython](https://twython.readthedocs.org/en/latest/):
+   - `pip install feedparser`
+   - `pip install twython`
+3. Create a [Twitter application](https://apps.twitter.com/), and generate keys, tokens etc.
+4. Modifiy the settings in the source code.
+   - Modify `feed_url` to the RSS feed you want to read.
+   - Modify the variables in the `TwitterAuth` class and add keys, tokens etc. for connecting to your Twitter app.
+   - Modify `retweet_include_words` for keywords you want to search and retweet, and `retweet_exclude_words` for keywords you would like to exclude from retweeting. For example `retweet_include_words = ["foo"]` and `retweet_exclude_words = ["bar"]` will include any tweet with the word "foo", as long as the word "bar" is absent. This list can also be left empty, i.e. `retweet_exclude_words = []`.
+
+## Requirements
+
+* Python 3+
+* Twitter account
+
+## Usage
+
+Read the RSS feed and post to Twitter account:
+
+```bash
 $ python twitterbot.py rss
-Cari tweet dan retweet:
+```
 
+Search for tweets and retweet them:
+
+```bash
 $ python twitterbot.py rt
-Siapkan contoh crontab
-Lebih disukai, Anda harus menggunakan crontab untuk mengatur Twitterbot agar berjalan sesuai jadwal.
+```
 
-contoh crontab:
+## Setup crontabs examples
 
-# Baca RSS feed setiap jam dan tweet tautan baru.
+Preferably, you should use crontab to set up Twitterbot to run on a schedule.
+
+crontab examples:
+
+```bash
+# Read RSS feed every hour and tweet new links.
 00 * * * * python twitterbot.py rss
 
-# Rewteet kata kunci / tagar setiap 15 menit.
-* / 15 * * * * python twitterbot.py rt
-Gunakan editor ekspresi jadwal cron untuk membuat cron dengan mudah.
+# Rewteet keywords/hashtags every 15 minutes.
+*/15 * * * * python twitterbot.py rt
+```
 
-Pertanyaan
-Lihat Pertanyaan dan jawaban di wiki.
+Use the [cron schedule expression editor](https://crontab.guru/) to easily create crons.
+
+## Questions
+
+See [Questions and answers](https://github.com/peterdalle/twitterbot/wiki/Questions-and-answers) in the wiki.
