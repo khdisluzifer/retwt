@@ -1,2 +1,2 @@
 feedparser 5.2.0
-twithon
+twython 3.8.0
